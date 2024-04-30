@@ -1,16 +1,24 @@
-package ejb;
+package ejbs;
 
 import javax.ejb.Stateful;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Stateful
 @Entity
 public class User {
 	@Id
+	@NotNull
 	String userName;
+	@NotNull
+	@Size (min=4, max=20)
 	String name;
+	@NotNull
+	@Size (min=4, max=20)
 	String password;
+	@NotNull
 	String email;
 	boolean isLeader;
 	Board board[];
