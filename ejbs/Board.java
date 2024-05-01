@@ -1,11 +1,18 @@
-package ejb;
+package ejbs;
 
 public class Board {
-	int id;
+	
 	String name;
+	int id;
 	User creator;
 	User collaborators[];
 	List lists[];
+	//constractor
+	public Board(String name,int id,User creator) {
+		this.name=name;
+		this.id=id;
+		this.creator=creator;
+	}
 	//setters
 	public void setId(int id) {
 		this.id=id;
@@ -21,7 +28,7 @@ public class Board {
 	}
 	//getters
 	
-	public String getUserName() {
+	public String getName() {
 		return name;
 	}
 	public int getId() {
@@ -33,4 +40,5 @@ public class Board {
 	public List[] getLists() {
 		return lists;
 	}
+	//methods
 }

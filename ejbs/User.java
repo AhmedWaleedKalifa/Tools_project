@@ -22,6 +22,15 @@ public class User {
 	String email;
 	boolean isLeader;
 	Board board[];
+	//constractor
+
+	public User(String userName,String name,String password,String email, boolean isLeader) {
+		this.userName=userName;
+		this.name=name;
+		this.password=password;
+		this.email=email;
+		this.isLeader=isLeader;
+	}
 	//setters
 	public void setUserName(String userName) {
 		this.userName=userName;

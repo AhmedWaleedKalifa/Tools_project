@@ -1,10 +1,15 @@
-package ejb;
+package ejbs;
 
 public class List {
 	String name;
 	int id;
 	Card cards[];
-	//setters
+		//constractor
+		public List(String name,int id) {
+			this.id=id;
+			this.name=name;
+		}
+		//setters
 		public void setId(int id) {
 			this.id=id;
 		}
@@ -16,7 +21,7 @@ public class List {
 		}
 		//getters
 		
-		public String getUserName() {
+		public String getName() {
 			return name;
 		}
 		public int getId() {
@@ -25,4 +30,5 @@ public class List {
 		public Card[] getCards() {
 			return cards;
 		}
+		//methods
 }
