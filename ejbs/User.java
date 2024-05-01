@@ -23,7 +23,12 @@ public class User {
 	boolean isLeader;
 	Board board[];
 	//constractor
-
+	public User() {
+		userName="0000";
+		name="----";
+		password="00000";
+		email="-----";
+	}
 	public User(String userName,String name,String password,String email, boolean isLeader) {
 		this.userName=userName;
 		this.name=name;
