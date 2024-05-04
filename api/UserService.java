@@ -29,6 +29,8 @@ public class UserService {
 	User user;
 //	ArrayList<User>usersList=new ArrayList<User>();
 	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("register")
 	public String register(User u){
 		if(em.find(User.class, u.getUserName())==null) {
@@ -42,6 +44,7 @@ public class UserService {
 		
 	}
 	@GET
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("login")
 	public String login(User u) {
 	    String queryStr = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password";
@@ -57,6 +60,20 @@ public class UserService {
 	    } else {
 	        return "Login failed. Incorrect email or password.";
 	    }
+	}
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("update")
+	public String updateProfile(User u,String password) {
+		User temp=em.find(User.class, u.getUserName());
+		if(temp!=null&&temp.getPassword()==u.getPassword()) {
+			em.merge(u);
+			return "The user updated successfully";
+
+		}else {
+			return "the password is  incorrect";
+		}
 	}
 //	@GET 
 //	@Path("login")
