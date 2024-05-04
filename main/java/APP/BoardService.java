@@ -4,7 +4,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import ejbs.Board;
 import ejbs.User;
-
+////
 @Stateful
 public class BoardService {
 	@EJB
@@ -14,4 +14,3 @@ public class BoardService {
 		return board;
 	}
 }
-//

@@ -17,7 +17,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import ejbs.User;
-
+////
 @Stateful
 
 @Path("/users")
@@ -60,4 +60,3 @@ public class UserService {
         }
     }
 }
-//

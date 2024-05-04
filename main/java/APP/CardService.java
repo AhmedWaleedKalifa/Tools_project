@@ -4,7 +4,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateful;
 
 import ejbs.Card;
-
+////
 @Stateful
 public class CardService {
 	@EJB
@@ -16,4 +16,3 @@ public class CardService {
 	}
 	
 }
-//

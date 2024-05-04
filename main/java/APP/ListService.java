@@ -5,7 +5,7 @@ import javax.ejb.Stateful;
 
 
 import ejbs.List;
-
+////
 @Stateful
 public class ListService {
 	@EJB
@@ -16,4 +16,3 @@ public class ListService {
 	}
 	
 }
-//
