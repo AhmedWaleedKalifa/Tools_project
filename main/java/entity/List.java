@@ -38,5 +38,4 @@ public class List {
 		public Card[] getCards() {
 			return cards;
 		}
-		//methods
 }

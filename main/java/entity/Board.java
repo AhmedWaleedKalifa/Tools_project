@@ -57,5 +57,5 @@ public class Board {
 	public ArrayList<List> getLists() {
 		return lists;
 	}
-	//methods
+
 }

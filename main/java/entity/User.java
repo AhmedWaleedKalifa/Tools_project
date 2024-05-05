@@ -72,7 +72,5 @@ public class User {
 	public ArrayList<Board> getBoards(){
 		return boards;
 	}
-	//methods
-	
-	
-	}
+
+}
