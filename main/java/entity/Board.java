@@ -1,24 +1,34 @@
 package entity;
 
-import javax.ejb.Stateful;
-import javax.persistence.Entity;
-//@Stateful
+//import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import java.util.ArrayList;
+
+import javax.persistence.Id;
+
 //@Entity
 public class Board {
-	
-	String name;
+//	@Id
+//	@NotNull
 	int id;
+//	@Size (min=4, max=20)
+	String name;
 	User creator;
-	User collaborators[];
-	List lists[];
+	ArrayList<User> collaborators=new ArrayList<>();
+	ArrayList <List>lists=new ArrayList<>();
 	//constructor
-	public Board(String name,int id,User creator) {
+	public Board(String name,int id,User creator,ArrayList<User>collaborators,ArrayList<List>lists) {
 		this.name=name;
 		this.id=id;
 		this.creator=creator;
+		this.collaborators=collaborators;
+		this.lists=lists;
 	}
 	public Board() {
 		name="---";
+		
 	}
 	//setters
 	public void setId(int id) {
@@ -30,7 +40,7 @@ public class Board {
 	public void setCreator(User creator) {
 		this.creator=creator;
 	}
-	public void setLists(List lists[]) {
+	public void setLists(ArrayList<List>lists) {
 		this.lists=lists;
 	}
 	//getters
@@ -44,7 +54,7 @@ public class Board {
 	public User getCreator() {
 		return creator;
 	}
-	public List[] getLists() {
+	public ArrayList<List> getLists() {
 		return lists;
 	}
 	//methods

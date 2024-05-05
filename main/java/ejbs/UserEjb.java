@@ -1,19 +1,27 @@
 package ejbs;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+//import javax.annotation.security.RolesAllowed;
+//import javax.resource.spi.work.SecurityContext;
+//import javax.ws.rs.core.Context;
 
-
+import APP.BoardService;
+import entity.Board;
 import entity.User;
 
 @Stateless 
 public class UserEjb {
     @PersistenceContext(unitName="hello")
     private EntityManager em;
+    
+//    @Context
+//    private SecurityContext securityContext;
 
     // Method to register a new user
    
@@ -43,6 +51,14 @@ public class UserEjb {
             return "Login failed. Incorrect email or password.";
         }
     }
+    
+    BoardService b;
+//    
+//    @RolesAllowed("user")
+    public String createBoard(String name,int id,User user,ArrayList<User>collaborators,ArrayList<entity.List> lists) {
+        // Check if the user is authenticated IMPORTANT
+    	b.createBoard(name, id, user,collaborators,lists);
+    	return "Board created successfully";
+    }
 
-	
 }

@@ -2,6 +2,8 @@ package APP;
 
 
 
+import java.util.ArrayList;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
@@ -14,6 +16,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import ejbs.UserEjb;
+import entity.Board;
+import entity.List;
 import entity.User;
 
 
@@ -26,20 +30,27 @@ public class UserService {
 	@PersistenceContext(unitName="hello")
 	private EntityManager em;
 	@EJB
-	UserEjb user;
+	UserEjb userejb;
 	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("register")
 	public String register(User u){
-		return user.register(u);
+		return userejb.register(u);
 	}
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("login")
 	public String login(User u) {
-	  return user.login(u);
+	  return userejb.login(u);
+	}
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("createboard")
+	public String createBoard(String name,int id,User user,ArrayList<User>collaborators,ArrayList<List>lists) {
+		return userejb.createBoard(name,id,user,collaborators,lists);
 	}
 	
 	//need test
