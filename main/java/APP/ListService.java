@@ -1,18 +1,13 @@
 package APP;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateful;
 
+import entity.List;
 
-import ejbs.List;
-////
-@Stateful
+
+
 public class ListService {
-	@EJB
-	List list;
-	public List CreateList (String name,int id) {
-		list=new List(name,id);
-		return list;
+	public List createList(String name,int id ) {
+		return new List(name,id);
 	}
-	
 }

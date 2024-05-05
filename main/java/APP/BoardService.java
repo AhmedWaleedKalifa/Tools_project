@@ -1,16 +1,12 @@
 package APP;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateful;
-import ejbs.Board;
-import ejbs.User;
-////
-@Stateful
+
+import entity.Board;
+import entity.User;
+
 public class BoardService {
-	@EJB
-	Board board;
-	public Board CreateBoard (String name,int id,User creator) {
-		board=new Board(name,id,creator);
-		return board;
+	public Board createBoard(String name,int id ,User u) {
+		return new Board(name,id,u);
 	}
 }
