@@ -1,5 +1,6 @@
 package APP;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.ws.rs.Consumes;
@@ -10,13 +11,12 @@ import javax.ws.rs.core.MediaType;
 
 import ejbs.ListEjb;
 import entity.List;
-
+//@RolesAllowed("teamleader")
 @Stateful
 @Path("/lists")
 public class ListService {
 	@EJB
 	ListEjb listEjb;
-	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)

@@ -1,5 +1,6 @@
 package APP;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
@@ -13,17 +14,15 @@ import javax.ws.rs.core.MediaType;
 
 import ejbs.CardEjb;
 import entity.Card;
-
+//@RolesAllowed("teamleader,collaborator")
 @Stateful
 @Path("/cards")
 public class CardService {
-//	@PersistenceContext(unitName="hello")
-//	private EntityManager em;
-//	
 	@EJB
 	CardEjb cardEjb;
 	//Card ID is the entity identifier so no 2 IDs can coexist
 	//handle error 500 after creating another card object of existing Id and return 403 forbidden
+	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -31,6 +30,8 @@ public class CardService {
 	public String createCard(Card c) {
 		return cardEjb.createCard(c);
 	}
+	
+	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
