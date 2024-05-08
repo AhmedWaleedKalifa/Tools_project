@@ -1,7 +1,5 @@
 package entity;
 
-import java.util.ArrayList;
-
 import javax.ejb.Stateful;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,30 +11,35 @@ import javax.validation.constraints.Size;
 public class User {
 	@Id
 	@NotNull
-	String email;
+	String userName;
+	@NotNull
 	@Size (min=4, max=20)
 	String name;
 	@NotNull
 	@Size (min=4, max=20)
 	String password;
 	@NotNull
+	String email;
 	boolean isLeader;
-	ArrayList<Board>boards=new ArrayList<>();
+	Board board[];
 	//constructor
 	public User() {
+		userName="0000";
 		name="----";
 		password="00000";
 		email="-----";
 	}
-	public User(String name,String password,String email, boolean isLeader) {
-
+	public User(String userName,String name,String password,String email, boolean isLeader) {
+		this.userName=userName;
 		this.name=name;
 		this.password=password;
 		this.email=email;
 		this.isLeader=isLeader;
 	}
 	//setters
-	
+	public void setUserName(String userName) {
+		this.userName=userName;
+	}
 	public void setName(String name) {
 		this.name=name;
 	}
@@ -49,13 +52,11 @@ public class User {
 	public void setIsLeader(boolean isLeader) {
 		this.isLeader=isLeader;
 	}
-	//add single board to boards list
-	public void setBoards(Board b) {
-		boards.add(b);
-	}
 	//getters
 	
-	
+	public String getUserName() {
+		return userName;
+	}
 	public String getName() {
 		return name;
 	}
@@ -69,8 +70,7 @@ public class User {
 	public boolean getIsLeader() {
 		return isLeader;
 	}
-	public ArrayList<Board> getBoards(){
-		return boards;
+	//methods
+	
+	
 	}
-
-}

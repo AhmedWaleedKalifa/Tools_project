@@ -26,7 +26,7 @@ public class UserEjb {
     // Method to register a new user
    
     public String register(User u) {
-		 if (em.find(User.class, u.getEmail()) == null) {
+		 if (em.find(User.class, u.getUserName()) == null) {
 	            em.persist(u);
 	            String name = u.getName();
 	            return name + " registered successfully";
@@ -52,14 +52,16 @@ public class UserEjb {
         }
     }
     
-    BoardService b;
-//    
-//    @RolesAllowed("user")
-    public String createBoard(String name,int id,User user,ArrayList<User>collaborators,ArrayList<entity.List> lists) {
-        // Check if the user is authenticated IMPORTANT
-    	b.createBoard(name, id, user,collaborators,lists);
-    	return "Board created successfully";
+    public String updateProfile(User u) {
+    		if(em.find( User.class,u.getUserName())!=null) {
+    			em.merge(u);
+                return "User profile updated successfully";
+    		}else {
+    			return "User not found the update failed";
+    		}
+    		
     }
+
 
 }
 //

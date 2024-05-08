@@ -8,6 +8,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.websocket.server.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -48,10 +49,14 @@ public class UserService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("createboard")
-	public String createBoard(String name,int id,User user,ArrayList<User>collaborators,ArrayList<List>lists) {
-		return userejb.createBoard(name,id,user,collaborators,lists);
+	@Path("update")
+	public String uptadeProfile(User u) {
+		return userejb.updateProfile(u);
 	}
+	
+	
+
+	
 	
 	//need test
 //	@POST
