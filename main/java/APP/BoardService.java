@@ -5,6 +5,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import ejbs.BoardEjb;
@@ -31,8 +32,9 @@ public class BoardService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("create")
-    public Board createBoard(Board b) {
-        return boardEjb.createBoard(b);
+    public Board createBoard(@QueryParam("id") int id ,Board b) {
+		
+        return boardEjb.createBoard(b,id);
     }
 //    @Resource(lookup="java:/jms/queue/DLQ")
 //    private Queue msgQueue;

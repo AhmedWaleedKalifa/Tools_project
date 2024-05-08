@@ -10,6 +10,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import ejbs.CardEjb;
@@ -27,8 +28,9 @@ public class CardService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("create")
-	public String createCard(Card c) {
-		return cardEjb.createCard(c);
+	public String createCard(@QueryParam("id")int id ,Card c) {
+		
+		return cardEjb.createCard(c,id);
 	}
 	
 	

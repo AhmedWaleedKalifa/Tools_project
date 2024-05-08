@@ -1,10 +1,13 @@
 package entity;
 
 import javax.ejb.Stateful;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-
+import entity.List;
 @Stateful
 @Entity
 public class Card {
@@ -12,7 +15,9 @@ public class Card {
 	int id;
 	@NotNull
 	String name;
-	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "creator_id")
+	List container;
 	String description;
 		//constructor
 		public Card(String name,int id,String description) {
@@ -33,7 +38,9 @@ public class Card {
 		public void setDescription(String description) {
 			this.description=description;
 		}
-		
+		public void setContainer(List l) {
+			this.container=l;
+		}
 		//getters
 		
 		public String getName() {
@@ -44,5 +51,8 @@ public class Card {
 		}
 		public String getDescription() {
 			return description;
+		}
+		public List getContainer() {
+			return container;
 		}
 }

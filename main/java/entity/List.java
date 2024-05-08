@@ -1,13 +1,20 @@
 package entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class List {
 	@Id
 	int id;
 	String name;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "creator_id")
+	Board container;
 	Card cards[];
 		//constructor
 		public List(String name,int id) {
@@ -27,6 +34,9 @@ public class List {
 		public void setCards(Card cards[]) {
 			this.cards=cards;
 		}
+		public void setContainer(Board b) {
+			this.container=b;
+		}
 		//getters
 		
 		public String getName() {
@@ -37,5 +47,8 @@ public class List {
 		}
 		public Card[] getCards() {
 			return cards;
+		}
+		public Board getContainer() {
+			return container;
 		}
 }

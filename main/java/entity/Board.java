@@ -1,20 +1,27 @@
 package entity;
 
-//import javax.persistence.Entity;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import java.util.ArrayList;
 
+import javax.ejb.Stateful;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.Id;
-
-//@Entity
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+@Stateful
+@Entity
 public class Board {
-//    @Id
-//    @NotNull
+    @Id
+    @NotNull
     int id;
-//    @Size (min=4, max=20)
+    @Size (min=4, max=20)
     String name;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "creator_id")
     User creator;
     ArrayList<User> collaborators=new ArrayList<>();
     ArrayList <List>lists=new ArrayList<>();
@@ -27,6 +34,7 @@ public class Board {
         this.lists=lists;
     }
     public Board() {
+    	id=0;
         name="---";
         
     }
