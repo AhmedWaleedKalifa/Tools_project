@@ -26,7 +26,7 @@ public class UserEjb {
     // Method to register a new user
    
     public String register(User u) {
-		 if (em.find(User.class, u.getUserName()) == null) {
+		 if (em.find(User.class, u.getId()) == null) {
 	            em.persist(u);
 	            String name = u.getName();
 	            return name + " registered successfully";
@@ -53,7 +53,8 @@ public class UserEjb {
     }
     
     public String updateProfile(User u) {
-    		if(em.find( User.class,u.getUserName())!=null) {
+    		if(em.find( User.class,u.getId())!=null) {
+    			//to change the user using his id
     			em.merge(u);
                 return "User profile updated successfully";
     		}else {

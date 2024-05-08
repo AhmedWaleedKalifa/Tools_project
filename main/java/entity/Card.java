@@ -2,12 +2,17 @@ package entity;
 
 import javax.ejb.Stateful;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
-//@Stateful
-//@Entity
+@Stateful
+@Entity
 public class Card {
-	String name;
+	@Id
 	int id;
+	@NotNull
+	String name;
+	
 	String description;
 		//constructor
 		public Card(String name,int id,String description) {
@@ -16,7 +21,7 @@ public class Card {
 			this.description=description;
 		}
 		public Card() {
-			
+			id=1;
 		}
 		//setters
 		public void setId(int id) {

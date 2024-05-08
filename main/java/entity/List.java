@@ -1,13 +1,13 @@
 package entity;
 
-import javax.ejb.Stateful;
 import javax.persistence.Entity;
-//
-//@Stateful
-//@Entity
+import javax.persistence.Id;
+
+@Entity
 public class List {
-	String name;
+	@Id
 	int id;
+	String name;
 	Card cards[];
 		//constructor
 		public List(String name,int id) {
@@ -15,7 +15,7 @@ public class List {
 			this.name=name;
 		}
 		public List() {
-			
+			id = 0;
 		}
 		//setters
 		public void setId(int id) {

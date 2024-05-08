@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 public class User {
 	@Id
 	@NotNull
-	String userName;
+	int id;
 	@NotNull
 	@Size (min=4, max=20)
 	String name;
@@ -21,24 +21,24 @@ public class User {
 	@NotNull
 	String email;
 	boolean isLeader;
-	Board board[];
+//	Board board[];
 	//constructor
 	public User() {
-		userName="0000";
+		id=0;
 		name="----";
 		password="00000";
 		email="-----";
 	}
-	public User(String userName,String name,String password,String email, boolean isLeader) {
-		this.userName=userName;
+	public User(int id,String name,String password,String email, boolean isLeader) {
+		this.id=id;
 		this.name=name;
 		this.password=password;
 		this.email=email;
 		this.isLeader=isLeader;
 	}
 	//setters
-	public void setUserName(String userName) {
-		this.userName=userName;
+	public void setId(int id) {
+		this.id=id;
 	}
 	public void setName(String name) {
 		this.name=name;
@@ -54,8 +54,8 @@ public class User {
 	}
 	//getters
 	
-	public String getUserName() {
-		return userName;
+	public int getId() {
+		return id;
 	}
 	public String getName() {
 		return name;
